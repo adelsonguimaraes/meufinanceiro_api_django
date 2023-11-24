@@ -1,0 +1,14 @@
+asgiref==3.6.0
+backports.zoneinfo==0.2.1
+Django==4.2.1
+django-cors-headers==4.1.0
+django-filter==23.2
+djangorestframework==3.14.0
+djangorestframework-jwt==1.11.0
+drf-flex-fields==1.0.2
+numpy==1.24.3
+PyJWT==1.7.1
+python-dateutil==2.8.2
+pytz==2023.3
+six==1.16.0
+sqlparse==0.4.4
