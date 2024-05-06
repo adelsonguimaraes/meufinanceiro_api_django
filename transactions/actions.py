@@ -75,11 +75,16 @@ class TransactionAction:
 class TransactionPortionAction:
     @staticmethod
     def generate_months_transitions():
+        months = []
         date_range = models.TransactionPortion.objects.aggregate(Max('due_date'), Min('due_date'))
+
+        if date_range['due_date__max'] is None or date_range['due_date__min'] is None:
+            return months
+
         diff_months = (date_range['due_date__max'].year - date_range['due_date__min'].year) * 12 + (
                 date_range['due_date__max'].month - date_range['due_date__min'].month)
 
-        months = []
+
         for i in range(diff_months + 1):
             due_date = date_range['due_date__min'] + relativedelta(months=i)
             value = models.TransactionPortion.objects \

@@ -33,7 +33,7 @@ class TransactionModelViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.TransactionSerializer
 
     def create(self, request, *args, **kwargs):
-        if not request.data['user']:
+        if 'user' not in request.data:
             request.data['user'] = request.user.id
 
         response = super(TransactionModelViewSet, self).create(request, *args, **kwargs)
